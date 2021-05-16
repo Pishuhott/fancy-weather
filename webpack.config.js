@@ -19,6 +19,11 @@ module.exports = {
             '@styles': path.resolve(__dirname, 'src/styles'),
           },
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     plugins: [
         new HTMLWebpackPlugin({
             title: 'Weather',
