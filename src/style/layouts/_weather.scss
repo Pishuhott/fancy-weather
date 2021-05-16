@@ -1,0 +1,172 @@
+.container-weather-map {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+.weather {
+    color: white;
+    user-select: none;
+    &__today {
+        display: flex;
+    }
+
+    &__temp-today {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30.6rem;
+        line-height: 37.3rem;
+        text-transform: uppercase;
+    }
+
+    &__deg-today {
+        font-size: 10rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    &__wrapper {
+        margin-left: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__icon-today {
+        img {
+            width: 70%;
+        }
+    }
+
+    &__today-details {
+        margin-top: 2rem;
+        span {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 2.2rem;
+            line-height: 3.7rem;
+            text-transform: uppercase;
+        }
+    }
+
+    &__title-feels-like {
+    }
+
+    &__feels-like {
+    }
+
+    &__title-wind {
+    }
+
+    &__wind {
+    }
+
+    &__wind-unit {
+    }
+
+    &__title-renge {
+    }
+
+    &__visibility {
+    }
+
+    &__three-days {
+        display: flex;
+        margin-top: 2rem;
+    }
+
+    &__day {
+        margin-right: 2rem;
+    }
+
+    &__day-title {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+        text-transform: uppercase;
+    }
+
+    &__title-first-day {
+    }
+
+    &__day-temp {
+        display: flex;
+        span {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 5rem;
+            line-height: 6.5rem;
+            text-transform: uppercase;
+        }
+    }
+
+    &__temp-first-day {
+    }
+
+    &__icon {
+        width: 100px;
+        height: 100px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__icon-first-day {
+    }
+
+    &__title-second-day {
+    }
+
+    &__temp-second-day {
+    }
+
+    &__icon-second-day {
+    }
+
+    &__third-day {
+    }
+
+    &__title-third-day {
+    }
+
+    &__temp-third-day {
+    }
+
+    &__icon-third-day {
+    }
+}
+.first-day {
+}
+.second-day {
+}
+.map {
+    display: flex;
+    flex-direction: column;
+    &__img {
+        width: 375px;
+        height: 375px;
+        border-radius: 20px;
+    }
+
+    &__coordinates {
+        text-align: right;
+        span {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.8rem;
+            line-height: 3rem;
+            text-transform: capitalize;
+            color: #ffffff;
+        }
+    }
+}
+.mapboxgl-map {
+}
+.title-latitude {
+}
+.latitude {
+}
+.title-longitude {
+}
+.longitude {
+}
