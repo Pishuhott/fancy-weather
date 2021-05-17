@@ -3,9 +3,9 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
+    // context: path.resolve(__dirname, 'src'),
     mode: 'development',
-    entry: './app.js',
+    entry: './src/app.js',
     output: {
         filename: '[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
@@ -28,7 +28,7 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             title: 'Weather',
-            template: './index.html'
+            template: 'index.html'
         }),
         new CleanWebpackPlugin()
     ],
