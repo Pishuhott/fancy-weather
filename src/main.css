@@ -293,3 +293,11 @@ button {
   text-transform: capitalize;
   color: #ffffff;
 }
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+  }
+}

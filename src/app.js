@@ -1,9 +1,9 @@
 import './main.css';
-import {showTime, getImage, setTempDeg, translate, setLocalStorage, getLocalStorage} from './js/utils'
-import {setMap, updateMap, changeLanguageOfMap} from './js/map';
 import {allData} from './js/data';
 import {findCity, findGeolocation, findIpLocation} from './js/geolocation';
+import {setMap, updateMap, changeLanguageOfMap} from './js/map';
 import {getWeather, setWeatherToday, setWeatherNextDays} from './js/weather';
+import {showTime, getImage, setTempDeg, translate, setLocalStorage, getLocalStorage} from './js/utils'
 
 let doc = document;
 let refreshBtn = doc.querySelector('.header__btn-refresh');
@@ -23,18 +23,15 @@ async function runApp(city) {
     await setWeatherNextDays(3);
     await updateMap(allData.coordinates.lng, allData.coordinates.lat);
     await setLocalStorage();
-    
 }
 
-
-
-
-
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     getLocalStorage();
+    setMap(allData.coordinates.lng, allData.coordinates.lat);
     findIpLocation()
-        .then(() => setMap(allData.coordinates.lng, allData.coordinates.lat))
+        .then(() => updateMap(allData.coordinates.lng, allData.coordinates.lat))
         .then(() => runApp(allData.city))
+        .then(() => translate())
         .then(() => changeLanguageOfMap())
         .then(() => showTime());
 })

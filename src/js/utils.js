@@ -98,7 +98,10 @@ export function setTempDeg(days) {
 }
 
 export function getLocalStorage() {
+    console.log('lol1')
+
     return new Promise((resolve) => {
+        console.log('lol2')
         if (localStorage.getItem('language') !== null) {
             allData.currentLanguage = localStorage.getItem('language');
         };

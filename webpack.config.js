@@ -3,14 +3,15 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
+    context: path.resolve(__dirname, 'src'),
     mode: 'development',
-    entry: './src/app.js',
+    entry: './app.js',
     output: {
         filename: '[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
-        extensions: ['.js', '.json', 'png', 'jpg', 'gif', 'svg'],
+        extensions: ['.js', '.json', '.css', '.scss', '.png', '.jpg', '.gif', '.svg'],
         alias: {
             '@': path.resolve(__dirname, 'src'),
             '@assets': path.resolve(__dirname, 'assets'),
@@ -27,7 +28,7 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             title: 'Weather',
-            template: './src/index.html'
+            template: './index.html'
         }),
         new CleanWebpackPlugin()
     ],
