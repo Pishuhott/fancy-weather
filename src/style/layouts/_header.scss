@@ -16,7 +16,7 @@
     &__btn-refresh {
         border-radius: 0.5rem;
         background: rgba(180, 184, 187, 0.4);
-        background-image: url('./../src/assets/images/refresh.svg');
+        background-image: url('./assets/images/refresh.svg');
         background-repeat: no-repeat;
         img {
             position: relative;
@@ -26,7 +26,7 @@
     }
 
     &__btn-refresh:hover {
-        background-image: url('./../src/assets/images/refresh.svg');
+        background-image: url('./assets/images/refresh.svg');
         background: hsla(0, 0%, 100%, .4);
     }
 
