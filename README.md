@@ -1,4 +1,4 @@
 # fancy-weather
 
-**[DEMO](https://pishuhott.github.io/fancy-weather/src**
+**[DEMO](https://pishuhott.github.io/fancy-weather/src)**
 
