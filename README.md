@@ -1,4 +1,4 @@
 # fancy-weather
 
-**[DEMO](https://pishuhott.github.io/fancy-weather/)**
+**[DEMO](https://pishuhott.github.io/fancy-weather.netlify.app)**
 
