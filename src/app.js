@@ -1,4 +1,4 @@
-import './main.css';
+import './main.scss';
 import {allData} from './js/data';
 import {findCity, findGeolocation, findIpLocation} from './js/geolocation';
 import {setMap, updateMap, changeLanguageOfMap} from './js/map';
