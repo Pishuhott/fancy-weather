@@ -10,8 +10,10 @@
 }
 body {
     max-width: 100vw;
-    min-height: 90vh;
+    min-height: 95vh;
     background-color: cadetblue;
+    position: relative;
+    overflow-x: hidden;
 }
 
 button {
@@ -24,25 +26,53 @@ button {
     transition: 0.5s;
     cursor: pointer;
 }
-.wrapper {
+
+.overlay, .background__image, .background__splash-screen {
+    position: absolute;
+    top: -4rem;
     width: 100%;
-    max-width: $main-size;
-    margin: auto;
+    height: 105%;
+}
+
+.overlay {
+    background: linear-gradient(180deg,rgba(8,15,26,.59),rgba(17,17,46,.46));
+    z-index: -1;
+    transition: none;
+}
+.background__splash-screen {
+    top: -110%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: cadetblue;
+    transition: all 1s linear;
+    z-index: 5;
+    img {
+        width: 100px;
+    }
+    .splash-screen-text {
+        font-size: 5rem;
+        color: white;
+    }
 }
 
 .background__image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('./assets/images/backgraund.png');
     background-size: cover;
     background-position: 50%;
     z-index: -2;
+    background-image: url('./assets/images/background.jpg');
 }
+
 .background__image-delete {
     animation: deleteImg 2s linear;
+}
+
+.wrapper {
+    padding: 0 6rem;
+    margin: auto;
+    width: 100%;
+    max-width: 1739px;
 }
 
 @keyframes deleteImg {
@@ -53,3 +83,4 @@ button {
         opacity: 1;
     }
 }
+

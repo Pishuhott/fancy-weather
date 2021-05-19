@@ -1,8 +1,7 @@
-import {allData} from './data'
+import {allData} from './data.js';
+
 let map;
 let marker;
-
-
 
 export function setMap(lng, lat) {
     return new Promise ((resolve) => {

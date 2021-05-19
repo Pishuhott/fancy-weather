@@ -1,0 +1,45 @@
+.error {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 3rem;
+    top: -100%;
+    left: 0;
+    right: 0;
+    max-width: max-content;
+    max-height: max-content;
+    background: rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px 0 rgb(0 0 0 / 40%);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    user-select: none;
+    z-index: 20;
+    transition: all .5s linear;
+    &__message {
+        padding: 5rem 5rem 4rem;
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    &__confirm-button {
+        width: 80px;
+        height: 40px;
+        border-radius: 1rem;
+        font-size: 2rem;
+        font-weight: 700;
+        color: black;
+        background: #fff;
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+}
+
+.active {
+    top: 0;
+}

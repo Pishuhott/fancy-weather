@@ -1,29 +1,12 @@
 import {
     allData
-} from './data';
+} from './data.js';
 import {
     language
-} from './language';
-
+} from './language.js';
+import {getWeather} from './weather.js'
 let doc = document;
 let rotateDeg = 0;
-
-function addZeroTime(n) {
-    return (parseInt(n, 10) < 10 ? '0' : '') + n;
-}
-
-function loadImage(urlImage) {
-    rotateDeg += 360;
-    let img = document.querySelector('.background__image');
-    let iconRefresh = document.querySelector('.header__refresh-circle-arrows');
-    
-    iconRefresh.style['transform'] = `rotate(${rotateDeg}deg)`;
-    img.style['background-image'] = `url(${urlImage})`;
-    img.classList.add('background__image-delete');
-    setTimeout(() => {
-        img.classList.remove('background__image-delete');
-    }, 2000)
-}
 
 export function showTime() {
     let today = new Date();
@@ -45,9 +28,27 @@ export function showTime() {
     doc.querySelector('.title__date').textContent = `${weekDay}, ${date} ${month}`;
     doc.querySelector('.title__time').textContent = `${hour}:${addZeroTime(min)}:${addZeroTime(sec)}`;
     setTimeout(showTime, 1000);
-};
+}
+
+function addZeroTime(n) {
+    return (parseInt(n, 10) < 10 ? '0' : '') + n;
+}
+
+function loadImage(urlImage) {
+    rotateDeg += 360;
+    let img = document.querySelector('.background__image');
+    let iconRefresh = document.querySelector('.header__refresh-circle-arrows');
+    
+    iconRefresh.style['transform'] = `rotate(${rotateDeg}deg)`;
+    img.style['background-image'] = `url(${urlImage})`;
+    img.classList.add('background__image-delete');
+    setTimeout(() => {
+        img.classList.remove('background__image-delete');
+    }, 2000)
+}
 
 export function translate() {
+    console.log(allData.currentLanguage + ' 1')
     let lang = [allData.currentLanguage];
         doc.querySelector('.header__search-input')
             .setAttribute('placeholder', language.searchInput[lang]);
@@ -69,6 +70,8 @@ export function translate() {
             language.latitude[lang];
         doc.querySelector('.title-longitude').textContent =
             language.longitude[lang];
+        doc.querySelector('.splash-screen-text').textContent = 
+            language.preloader[lang]; 
         showTime();
 }
 
@@ -80,6 +83,14 @@ export function getImage() {
         .then(res => res.json())
         .then(data => {
             loadImage(data.urls.regular)
+        })
+        .catch(error => {
+            let elErr = document.querySelector('.error');
+            let lang = [allData.currentLanguage];
+            elErr.querySelector('.error__message').textContent = 
+                language.error.background[lang];
+            elErr.classList.add('active');
+            console.log(error);
         })
 }
 
@@ -98,10 +109,7 @@ export function setTempDeg(days) {
 }
 
 export function getLocalStorage() {
-    console.log('lol1')
-
     return new Promise((resolve) => {
-        console.log('lol2')
         if (localStorage.getItem('language') !== null) {
             allData.currentLanguage = localStorage.getItem('language');
         };
@@ -136,3 +144,10 @@ export function setLocalStorage() {
     localStorage.setItem('temp', allData.currentUnitOfTemperature);
 }
 
+export function weatherUpdateController() {
+    let date = new Date();
+
+    if (date > allData.lastUpdated) {
+        getWeather()
+    }
+}

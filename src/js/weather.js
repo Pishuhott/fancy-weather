@@ -1,9 +1,10 @@
-import {allData} from './data';
-import {language} from './language';
+import {allData} from './data.js';
+import {language} from './language.js';
 
 let doc = document;
 
 let getDataWeatherToday = function (data) {
+    allData.lastUpdated = data.current.last_updated;
     allData.dayId = data.current.is_day;
     allData.weatherId = data.current.condition.code;
     allData.weather = data.current.condition.text;
@@ -84,13 +85,22 @@ export function getWeather(lng, lat) {
         .then(data => {
             getDataWeatherToday(data);
             getDataWeatherNextDays(data);
+            console.log(data)
+        })
+        .catch(error => {
+            let elErr = document.querySelector('.error');
+            let lang = [allData.currentLanguage];
+            elErr.querySelector('.error__message').textContent = 
+                language.weather.background[lang];
+            elErr.classList.add('active');
+            console.log(error);
         })
 }
 
 export function setWeatherToday() {
     return new Promise((resolve) => {
         let tempKey = [allData.currentUnitOfTemperature];
-
+        
         doc.querySelector('.weather__temp-today').textContent = 
             allData.temperatureToday[tempKey];
         doc.querySelector('.weather__today-description').textContent = 

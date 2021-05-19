@@ -1,7 +1,6 @@
 export let allData = {
     currentLanguage: 'en',
     currentUnitOfTemperature: 'celsius',
-    citySearch: '',
     coordinates: {
       lat: 0,
       lng: 0,
@@ -18,6 +17,7 @@ export let allData = {
       today: '',
       nextDays: [],
     },
+    lastUpdated: 0,
     dateNextDay: [0, 0, 0],
     weatherId: 0,
     weatherIdNextDays: [0, 0, 0,],
@@ -32,6 +32,4 @@ export let allData = {
     visibility: 0,
     city: '',
     country: '',
-    offset: 0,
-    error: false,
   };

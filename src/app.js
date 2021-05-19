@@ -1,9 +1,28 @@
-import './main.css';
-import {allData} from './js/data';
-import {findCity, findGeolocation, findIpLocation} from './js/geolocation';
-import {setMap, updateMap, changeLanguageOfMap} from './js/map';
-import {getWeather, setWeatherToday, setWeatherNextDays} from './js/weather';
-import {showTime, getImage, setTempDeg, translate, setLocalStorage, getLocalStorage} from './js/utils'
+import {allData} from './js/data.js';
+import {
+    findCity,
+    findGeolocation,
+    findIpLocation
+} from './js/geolocation.js';
+import {
+    setMap,
+    updateMap,
+    changeLanguageOfMap
+} from './js/map.js';
+import {
+    getWeather,
+    setWeatherToday,
+    setWeatherNextDays
+} from './js/weather.js';
+import {
+    showTime,
+    getImage,
+    setTempDeg,
+    translate,
+    setLocalStorage,
+    getLocalStorage,
+    weatherUpdateController
+} from './js/utils.js'
 
 let doc = document;
 let refreshBtn = doc.querySelector('.header__btn-refresh');
@@ -14,30 +33,38 @@ let tembFahBtn = doc.querySelector('.header__btn-fahrenheid-deg');
 let locatiosBtn = doc.querySelector('.header__btn-current-location');
 let searchBtn = doc.querySelector('.header__search-btn');
 let searchInput = doc.querySelector('.header__search-input');
+let errBtn = doc.querySelector('.error__confirm-button');
 
 async function runApp(city) {
     await findCity(city);
     await getWeather(allData.coordinates.lng, allData.coordinates.lat);
-    await translate();
     await setWeatherToday();
     await setWeatherNextDays(3);
     await updateMap(allData.coordinates.lng, allData.coordinates.lat);
     await setLocalStorage();
 }
 
+window.addEventListener('load', () => {
+    findIpLocation()
+        .then(() => runApp(allData.city))
+        .then(() => updateMap(allData.coordinates.lng, allData.coordinates.lat))
+        .then(() => changeLanguageOfMap())
+        .then(() => {
+            setTimeout(() => {
+                doc.querySelector('.background__splash-screen')
+                    .classList.remove('active');
+            }, 1000)
+        });
+})
+
 window.addEventListener('DOMContentLoaded', () => {
     getLocalStorage();
     setMap(allData.coordinates.lng, allData.coordinates.lat);
-    findIpLocation()
-        .then(() => updateMap(allData.coordinates.lng, allData.coordinates.lat))
-        .then(() => runApp(allData.city))
-        .then(() => translate())
-        .then(() => changeLanguageOfMap())
-        .then(() => showTime());
+    translate();
 })
 
 refreshBtn.addEventListener('click', () => {
-    getImage() 
+    getImage()
 })
 
 langEnBtn.addEventListener('click', () => {
@@ -45,12 +72,12 @@ langEnBtn.addEventListener('click', () => {
     langEnBtn.classList.add('header__btn--active');
     allData.currentLanguage = 'en';
     findCity(allData.city)
-            .then(() => getWeather(allData.coordinates.lng, allData.coordinates.lat))
-            .then(() => setWeatherToday()) 
-            .then(() => setWeatherNextDays(3))
-            .then(() => translate())
-            .then(() => changeLanguageOfMap())
-            .then(() => setLocalStorage())
+        .then(() => getWeather(allData.coordinates.lng, allData.coordinates.lat))
+        .then(() => setWeatherToday())
+        .then(() => setWeatherNextDays(3))
+        .then(() => translate())
+        .then(() => changeLanguageOfMap())
+        .then(() => setLocalStorage())
 })
 
 langRuBtn.addEventListener('click', () => {
@@ -58,12 +85,12 @@ langRuBtn.addEventListener('click', () => {
     langRuBtn.classList.add('header__btn--active');
     allData.currentLanguage = 'ru';
     findCity(allData.city)
-            .then(() => getWeather(allData.coordinates.lng, allData.coordinates.lat))
-            .then(() => setWeatherToday()) 
-            .then(() => setWeatherNextDays(3))
-            .then(() => translate())
-            .then(() => changeLanguageOfMap())
-            .then(() => setLocalStorage())
+        .then(() => getWeather(allData.coordinates.lng, allData.coordinates.lat))
+        .then(() => setWeatherToday())
+        .then(() => setWeatherNextDays(3))
+        .then(() => translate())
+        .then(() => changeLanguageOfMap())
+        .then(() => setLocalStorage())
 })
 
 tempCelBtn.addEventListener('click', () => {
@@ -84,12 +111,28 @@ tembFahBtn.addEventListener('click', () => {
 
 locatiosBtn.addEventListener('click', () => {
     findGeolocation()
-        .then(() => runApp(allData.coordinates.lat + 
+        .then(() => runApp(allData.coordinates.lat +
             ',' + allData.coordinates.lng))
 })
 
 searchBtn.addEventListener('click', () => {
     runApp(searchInput.value)
-      
-});
+})
 
+searchInput.onkeydown = function() {
+	this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+}
+
+searchInput.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13) {
+        runApp(searchInput.value)
+    }
+})
+
+errBtn.addEventListener('click', () => {
+    doc.querySelector('.error').classList.remove('active')
+})
+
+setInterval(() => {
+    weatherUpdateController()
+}, 9e5)

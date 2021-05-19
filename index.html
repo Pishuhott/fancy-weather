@@ -7,21 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./src/main.css">
+    <link rel="stylesheet" href="src/main.css">
     <title>Weather</title>
 </head>
 
 <body id="body">
+    <div class="error">
+        <p class="error__message"></p>
+        <button class="error__confirm-button">Ok</button>
+    </div>
+    <div class="overlay"></div>
+    <div class="background">
+        <div class="background__splash-screen active">
+            <img src="./src/assets/images/preloader.svg" alt="">
+            <p class="splash-screen-text"></p>
+        </div>
+        <div class="background__image"></div>
+      </div>
     <div class="wrapper">
-        
-        <div class="background">
-            <div class="background__image"></div>
-          </div>
         <div class="header">
             <div class="header__buttons">
                 <button class="header__btn-refresh">
-                    <img class="header__refresh-circle-arrows"  src="./assets/images/Vector.svg" alt="">
+                    <img class="header__refresh-circle-arrows"  src="./src/assets/images/Vector.svg" alt="">
                 </button>
                 <div class="header__language">
                     <button class="header__btn-eng-lang">EN</button>
@@ -32,7 +39,7 @@
                     <button class="header__btn-fahrenheid-deg">℉</button>
                 </div>
                 <button class="header__btn-current-location">
-                    <img src="./assets/images/current-location.svg" alt="current-location">
+                    <img src="./src/assets/images/current-location.svg" alt="current-location">
                 </button>
             </div>
 
@@ -53,8 +60,10 @@
         <div class="container-weather-map">
             <div class="weather">
                 <div class="weather__today">
-                    <span class="weather__temp-today"></span>
-                    <span class="weather__deg-today">°</span>
+                    <div class="weather__today-container-temp">
+                        <span class="weather__temp-today"></span>
+                        <span class="weather__deg-today">°</span>
+                    </div>
                     <div class="weather__wrapper">
                         <div class="weather__icon-today"></div>
                         <div class="weather__today-details">
@@ -89,8 +98,10 @@
                     <div class="weather__day first-day">
                         <div class="weather__day-title weather__title-day-0"></div>
                         <div class="weather__day-temp">
-                            <span class="weather__temp-day-0"></span>
-                            <span>°</span>
+                            <div class="weather__container-temp"">
+                                <span class="weather__temp-day-0"></span>
+                                <span class="weather__deg-nex-day">°</span>
+                            </div>
                             <div class="weather__icon weather__icon-day-0"></div>
                         </div>
                     </div>
@@ -98,8 +109,10 @@
                     <div class="weather__day second-day">
                         <div class="weather__day-title weather__title-day-1"></div>
                         <div class="weather__day-temp">
-                            <span class="weather__temp-day-1"></span>
-                            <span>°</span>
+                            <div class="weather__container-temp"">
+                                <span class="weather__temp-day-1"></span>
+                                <span class="weather__deg-nex-day">°</span>
+                            </div>
                             <div class="weather__icon weather__icon-day-1"></div>
                         </div>
                     </div>
@@ -107,8 +120,10 @@
                     <div class="weather__day weather__third-day">
                         <div class="weather__day-title weather__title-day-2"></div>
                         <div class="weather__day-temp">
-                            <span class="weather__temp-day-2"></span>
-                            <span>°</span>
+                            <div class="weather__container-temp"">
+                                <span class="weather__temp-day-2"></span>
+                                <span class="weather__deg-nex-day">°</span>
+                            </div>
                             <div class="weather__icon weather__icon-day-2"></div>
                         </div>
                     </div>
@@ -131,7 +146,7 @@
             </div>
         </div>
     </div>
-    <script src="./src/app.js"></script>
+    <script type="module" src="./src/app.js"></script>
 </body>
 
 </html>
