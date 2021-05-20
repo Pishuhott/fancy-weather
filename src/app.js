@@ -15,7 +15,6 @@ import {
     setWeatherNextDays
 } from './js/weather.js';
 import {
-    showTime,
     getImage,
     setTempDeg,
     translate,
@@ -36,18 +35,18 @@ let searchInput = doc.querySelector('.header__search-input');
 let errBtn = doc.querySelector('.error__confirm-button');
 
 async function runApp(city) {
+    allData.lastUpdated = 0;
     await findCity(city);
-    await getWeather(allData.coordinates.lng, allData.coordinates.lat);
+    await getWeather();
     await setWeatherToday();
     await setWeatherNextDays(3);
-    await updateMap(allData.coordinates.lng, allData.coordinates.lat);
+    await updateMap();
     await setLocalStorage();
 }
 
 window.addEventListener('load', () => {
     findIpLocation()
         .then(() => runApp(allData.city))
-        .then(() => updateMap(allData.coordinates.lng, allData.coordinates.lat))
         .then(() => changeLanguageOfMap())
         .then(() => {
             setTimeout(() => {
@@ -59,7 +58,7 @@ window.addEventListener('load', () => {
 
 window.addEventListener('DOMContentLoaded', () => {
     getLocalStorage();
-    setMap(allData.coordinates.lng, allData.coordinates.lat);
+    setMap();
     translate();
 })
 
@@ -72,7 +71,7 @@ langEnBtn.addEventListener('click', () => {
     langEnBtn.classList.add('header__btn--active');
     allData.currentLanguage = 'en';
     findCity(allData.city)
-        .then(() => getWeather(allData.coordinates.lng, allData.coordinates.lat))
+        .then(() => getWeather())
         .then(() => setWeatherToday())
         .then(() => setWeatherNextDays(3))
         .then(() => translate())
@@ -85,7 +84,7 @@ langRuBtn.addEventListener('click', () => {
     langRuBtn.classList.add('header__btn--active');
     allData.currentLanguage = 'ru';
     findCity(allData.city)
-        .then(() => getWeather(allData.coordinates.lng, allData.coordinates.lat))
+        .then(() => getWeather())
         .then(() => setWeatherToday())
         .then(() => setWeatherNextDays(3))
         .then(() => translate())
@@ -119,8 +118,8 @@ searchBtn.addEventListener('click', () => {
     runApp(searchInput.value)
 })
 
-searchInput.onkeydown = function() {
-	this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+searchInput.onkeydown = function () {
+    this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
 }
 
 searchInput.addEventListener('keydown', (e) => {

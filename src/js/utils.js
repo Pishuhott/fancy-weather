@@ -1,10 +1,11 @@
+import {allData} from './data.js';
+import {language} from './language.js';
 import {
-    allData
-} from './data.js';
-import {
-    language
-} from './language.js';
-import {getWeather} from './weather.js'
+    getWeather,
+    setWeatherToday,
+    setWeatherNextDays
+} from './weather.js'
+
 let doc = document;
 let rotateDeg = 0;
 
@@ -38,7 +39,7 @@ function loadImage(urlImage) {
     rotateDeg += 360;
     let img = document.querySelector('.background__image');
     let iconRefresh = document.querySelector('.header__refresh-circle-arrows');
-    
+
     iconRefresh.style['transform'] = `rotate(${rotateDeg}deg)`;
     img.style['background-image'] = `url(${urlImage})`;
     img.classList.add('background__image-delete');
@@ -48,37 +49,37 @@ function loadImage(urlImage) {
 }
 
 export function translate() {
-    console.log(allData.currentLanguage + ' 1')
     let lang = [allData.currentLanguage];
-        doc.querySelector('.header__search-input')
-            .setAttribute('placeholder', language.searchInput[lang]);
-        doc.querySelector('.header__search-btn').textContent =
-            language.searchButton[lang];
-        doc.querySelector('.weather__title-feels-like').textContent =
-            language.weatherConditions.feelsLike[lang];
-        doc.querySelector('.weather__title-wind').textContent =
-            language.weatherConditions.wind[lang];
-        doc.querySelector('.weather__wind-unit').textContent =
-            language.weatherConditions.windUnit[lang];
-        doc.querySelector('.weather__title-humidity').textContent =
-            language.weatherConditions.humidity[lang];
-        doc.querySelector('.weather__title-renge').textContent =
-            language.weatherConditions.visRange[lang];
-        doc.querySelector('.weather__visibility-unit').textContent =
-            language.weatherConditions.visRangeUnit[lang];
-        doc.querySelector('.title-latitude').textContent =
-            language.latitude[lang];
-        doc.querySelector('.title-longitude').textContent =
-            language.longitude[lang];
-        doc.querySelector('.splash-screen-text').textContent = 
-            language.preloader[lang]; 
-        showTime();
+    doc.querySelector('.header__search-input')
+        .setAttribute('placeholder', language.searchInput[lang]);
+    doc.querySelector('.header__search-btn').textContent =
+        language.searchButton[lang];
+    doc.querySelector('.weather__title-feels-like').textContent =
+        language.weatherConditions.feelsLike[lang];
+    doc.querySelector('.weather__title-wind').textContent =
+        language.weatherConditions.wind[lang];
+    doc.querySelector('.weather__wind-unit').textContent =
+        language.weatherConditions.windUnit[lang];
+    doc.querySelector('.weather__title-humidity').textContent =
+        language.weatherConditions.humidity[lang];
+    doc.querySelector('.weather__title-renge').textContent =
+        language.weatherConditions.visRange[lang];
+    doc.querySelector('.weather__visibility-unit').textContent =
+        language.weatherConditions.visRangeUnit[lang];
+    doc.querySelector('.title-latitude').textContent =
+        language.latitude[lang];
+    doc.querySelector('.title-longitude').textContent =
+        language.longitude[lang];
+    doc.querySelector('.splash-screen-text').textContent =
+        language.preloader[lang];
+    showTime();
 }
 
 export function getImage() {
     let key = 'JtHvIZb0hBW0IQpqUKN0vF-meUy8nDWf38FWLBMnfDs'
     let url = `https://api.unsplash.com/photos/random?orientation=landscape&per_page=1
         &query=nature&client_id=${key}`;
+
     fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -87,10 +88,9 @@ export function getImage() {
         .catch(error => {
             let elErr = document.querySelector('.error');
             let lang = [allData.currentLanguage];
-            elErr.querySelector('.error__message').textContent = 
+            elErr.querySelector('.error__message').textContent =
                 language.error.background[lang];
             elErr.classList.add('active');
-            console.log(error);
         })
 }
 
@@ -117,7 +117,7 @@ export function getLocalStorage() {
         if (localStorage.getItem('temp') !== null) {
             allData.currentUnitOfTemperature = localStorage.getItem('temp');
         }
-        
+
         if (allData.currentLanguage === 'en') {
             doc.querySelector('.header__btn-eng-lang').classList.add('header__btn--active');
             doc.querySelector('.header__btn-ru-lang').classList.remove('header__btn--active');
@@ -145,9 +145,12 @@ export function setLocalStorage() {
 }
 
 export function weatherUpdateController() {
-    let date = new Date();
+    getWeather()
+        .then(() => {
+            if (allData.weatherUpdate === true) {
+                setWeatherToday();
+                setWeatherNextDays();
+            }
+        })
 
-    if (date > allData.lastUpdated) {
-        getWeather()
-    }
 }

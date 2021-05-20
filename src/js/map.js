@@ -3,29 +3,34 @@ import {allData} from './data.js';
 let map;
 let marker;
 
-export function setMap(lng, lat) {
-    return new Promise ((resolve) => {
+export function setMap() {
+    const lng = allData.coordinates.lng;
+    const lat = allData.coordinates.lat;
 
-    mapboxgl.accessToken =
-        'pk.eyJ1IjoicGlzaHVob3R0IiwiYSI6ImNrb2luZmxtYTFoODQybnRyejRiZnhueDMifQ.5IzK17HFZAddy9hkg64rMg';
-    map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [lng, lat],
-        zoom: 11,
-    });
+    return new Promise((resolve) => {
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoicGlzaHVob3R0IiwiYSI6ImNrb2luZmxtYTFoODQybnRyejRiZnhueDMifQ.5IzK17HFZAddy9hkg64rMg';
+        map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [lng, lat],
+            zoom: 11,
+        });
 
-    marker = new mapboxgl.Marker()
-        .setLngLat([lng, lat])
-        .addTo(map);
+        marker = new mapboxgl.Marker()
+            .setLngLat([lng, lat])
+            .addTo(map);
 
-    setTimeout(() =>{
-        resolve();
-    }, 0)
-})
+        setTimeout(() => {
+            resolve();
+        }, 0)
+    })
 };
 
-export function updateMap(lng, lat) {
+export function updateMap() {
+    const lng = allData.coordinates.lng;
+    const lat = allData.coordinates.lat;
+
     map.flyTo({
         center: [lng, lat],
         essential: true
@@ -38,23 +43,22 @@ export function updateMap(lng, lat) {
 }
 
 export function changeLanguageOfMap() {
-    return new Promise ((resolve) => {
+    return new Promise((resolve) => {
         map.getStyle().layers.map((each) => {
             if (
-              each.hasOwnProperty('layout') &&
-              each.layout.hasOwnProperty('text-field')
+                each.hasOwnProperty('layout') &&
+                each.layout.hasOwnProperty('text-field')
             ) {
-              if (!each.id.includes('road'))
-                map.setLayoutProperty(each.id, 'text-field', [
-                  'get',
-                  `name_${allData.currentLanguage}`,
-                ]);
+                if (!each.id.includes('road'))
+                    map.setLayoutProperty(each.id, 'text-field', [
+                        'get',
+                        `name_${allData.currentLanguage}`,
+                    ]);
             }
-          });
+        });
 
-        setTimeout(() =>{
+        setTimeout(() => {
             resolve();
         }, 0)
     })
-
 }

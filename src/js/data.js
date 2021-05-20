@@ -2,8 +2,8 @@ export let allData = {
     currentLanguage: 'en',
     currentUnitOfTemperature: 'celsius',
     coordinates: {
-      lat: 0,
-      lng: 0,
+        lat: 0,
+        lng: 0,
     },
     temperatureToday: {
         celsius: 0,
@@ -14,13 +14,14 @@ export let allData = {
         fahrenheit: [0, 0, 0],
     },
     weatherIcon: {
-      today: '',
-      nextDays: [],
+        today: '',
+        nextDays: [],
     },
     lastUpdated: 0,
+    weatherUpdate: false,
     dateNextDay: [0, 0, 0],
     weatherId: 0,
-    weatherIdNextDays: [0, 0, 0,],
+    weatherIdNextDays: [0, 0, 0, ],
     dayId: 1,
     weather: 0,
     feelsLike: {
@@ -32,4 +33,4 @@ export let allData = {
     visibility: 0,
     city: '',
     country: '',
-  };
+};

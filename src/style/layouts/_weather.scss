@@ -4,6 +4,7 @@
     justify-content: space-between;
     height: max-content;
 }
+
 .weather {
     color: white;
     user-select: none;
@@ -46,6 +47,7 @@
 
     &__today-details {
         margin-top: 2rem;
+        max-width: 50rem;
         span {
             font-style: normal;
             font-weight: bold;

@@ -11,13 +11,13 @@
     right: 0;
     max-width: max-content;
     max-height: max-content;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, 0.5);
     box-shadow: 0 5px 15px 0 rgb(0 0 0 / 40%);
     backdrop-filter: blur(15px);
     border-radius: 20px;
     user-select: none;
     z-index: 20;
-    transition: all .5s linear;
+    transition: all 0.5s linear;
     &__message {
         padding: 5rem 5rem 4rem;
         text-align: center;

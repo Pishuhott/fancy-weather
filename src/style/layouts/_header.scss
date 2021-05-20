@@ -1,5 +1,5 @@
 .header {
-    margin-top: 4rem;
+    padding-top: 4rem;
     display: flex;
     justify-content: space-between;
 
@@ -16,7 +16,7 @@
     &__btn-refresh {
         border-radius: 0.5rem;
         background: rgba(180, 184, 187, 0.4);
-        background-image: url('./assets/images/refresh.svg');
+        background-image: url("./assets/images/refresh.svg");
         background-repeat: no-repeat;
         img {
             position: relative;
@@ -24,8 +24,8 @@
             transition: 1s;
         }
         &:hover {
-            background: hsla(0, 0%, 100%, .4);
-            background-image: url('./assets/images/refresh.svg');
+            background: hsla(0, 0%, 100%, 0.4);
+            background-image: url("./assets/images/refresh.svg");
         }
     }
 

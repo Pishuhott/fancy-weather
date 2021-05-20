@@ -6,13 +6,14 @@
     outline: none;
     border: none;
     font-size: 10px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
+
 body {
     max-width: 100vw;
-    min-height: 95vh;
-    background-color: cadetblue;
+    min-height: 100vh;
     position: relative;
+    background-color: cadetblue;
     overflow-x: hidden;
 }
 
@@ -27,20 +28,23 @@ button {
     cursor: pointer;
 }
 
-.overlay, .background__image, .background__splash-screen {
+.overlay,
+.background__image,
+.background__splash-screen {
     position: absolute;
-    top: -4rem;
+    top: 0;
     width: 100%;
-    height: 105%;
+    height: 100%;
 }
 
 .overlay {
-    background: linear-gradient(180deg,rgba(8,15,26,.59),rgba(17,17,46,.46));
+    background: linear-gradient(180deg, rgba(8, 15, 26, 0.59), rgba(17, 17, 46, 0.46));
     z-index: -1;
     transition: none;
 }
+
 .background__splash-screen {
-    top: -110%;
+    top: -100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +65,7 @@ button {
     background-size: cover;
     background-position: 50%;
     z-index: -2;
-    background-image: url('./assets/images/background.jpg');
+    background-image: url("./assets/images/background.jpg");
 }
 
 .background__image-delete {
@@ -83,4 +87,3 @@ button {
         opacity: 1;
     }
 }
-

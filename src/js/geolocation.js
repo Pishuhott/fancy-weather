@@ -1,9 +1,5 @@
-import {
-    allData
-} from './data.js';
-import {
-    language
-} from './language.js';
+import {allData} from './data.js';
+import {language} from './language.js';
 
 export function findCity(city) {
     let key = 'c6b6da0f80f24b299e08ee1075f81aa5&pretty'
@@ -11,9 +7,8 @@ export function findCity(city) {
         &key=${key}=1&no_annotations=11&language=${allData.currentLanguage}`;
 
     return fetch(url)
-    .then(res => res.json())
-    .then(data => {
-            console.log(allData.city)
+        .then(res => res.json())
+        .then(data => {
             allData.coordinates.lat = data.results[0].geometry.lat;
             allData.coordinates.lng = data.results[0].geometry.lng;
 
@@ -41,7 +36,6 @@ export function findCity(city) {
             elErr.querySelector('.error__message').textContent =
                 language.error.query[lang];
             elErr.classList.add('active');
-            console.log(error);
         });
 }
 
@@ -58,10 +52,9 @@ export function findGeolocation() {
         .catch(error => {
             let elErr = document.querySelector('.error');
             let lang = [allData.currentLanguage];
-                elErr.querySelector('.error__message').textContent =
-            language.currentCoordinates.query[lang];
+            elErr.querySelector('.error__message').textContent =
+                language.currentCoordinates.query[lang];
             elErr.classList.add('active');
-            console.log(error);
         })
 }
 
@@ -74,9 +67,8 @@ export function findIpLocation() {
         .catch(error => {
             let elErr = document.querySelector('.error');
             let lang = [allData.currentLanguage];
-                elErr.querySelector('.error__message').textContent =
-            language.currentCoordinates.query[lang];
+            elErr.querySelector('.error__message').textContent =
+                language.currentCoordinates.query[lang];
             elErr.classList.add('active');
-            console.log(error);
         });
 }

@@ -4,7 +4,7 @@ import {language} from './language.js';
 let doc = document;
 
 let getDataWeatherToday = function (data) {
-    allData.lastUpdated = data.current.last_updated;
+    allData.lastUpdated = data.current.last_updated_epoch;
     allData.dayId = data.current.is_day;
     allData.weatherId = data.current.condition.code;
     allData.weather = data.current.condition.text;
@@ -42,8 +42,7 @@ let assigningIcons = function (dayId = 1, weatherId, iconDay, spareIcon) {
         dayOrNight = 'night';
     } else {
         dayOrNight = 'day';
-    };
-   
+    }
 
     if (weatherId === 1000) {
         iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/113.svg'>`;
@@ -73,50 +72,57 @@ let assigningIcons = function (dayId = 1, weatherId, iconDay, spareIcon) {
         iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/389.svg'>`;
     } else {
         iconDay.innerHTML = `<img src='${spareIcon}'>`;
-    };
+    }
 }
 
-export function getWeather(lng, lat) {
+export function getWeather() {
+    const lng = allData.coordinates.lng;
+    const lat = allData.coordinates.lat;
     const key = '485137a585be4832b85155503210705';
     const url = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},
         ${lng}&days=4&lang=${allData.currentLanguage}&aqi=no&alerts=no`;
+
     return fetch(url)
         .then(res => res.json())
         .then(data => {
-            getDataWeatherToday(data);
-            getDataWeatherNextDays(data);
-            console.log(data)
+            if (allData.lastUpdated < data.current.last_updated_epoch) {
+                getDataWeatherToday(data);
+                getDataWeatherNextDays(data);
+                allData.weatherUpdate = true;
+            } else {
+                allData.weatherUpdate = false;
+            }
         })
         .catch(error => {
+            console.log(error);
             let elErr = document.querySelector('.error');
             let lang = [allData.currentLanguage];
-            elErr.querySelector('.error__message').textContent = 
+            elErr.querySelector('.error__message').textContent =
                 language.weather.background[lang];
             elErr.classList.add('active');
-            console.log(error);
         })
 }
 
 export function setWeatherToday() {
     return new Promise((resolve) => {
         let tempKey = [allData.currentUnitOfTemperature];
-        
-        doc.querySelector('.weather__temp-today').textContent = 
+
+        doc.querySelector('.weather__temp-today').textContent =
             allData.temperatureToday[tempKey];
-        doc.querySelector('.weather__today-description').textContent = 
+        doc.querySelector('.weather__today-description').textContent =
             allData.weather;
-        doc.querySelector('.weather__feels-like').textContent = 
+        doc.querySelector('.weather__feels-like').textContent =
             allData.feelsLike[tempKey];
-        doc.querySelector('.weather__wind').textContent = 
+        doc.querySelector('.weather__wind').textContent =
             ((allData.wind) * 0.28).toFixed(1);
-        doc.querySelector('.weather__humidity').textContent = 
+        doc.querySelector('.weather__humidity').textContent =
             allData.humidity;
-        doc.querySelector('.weather__visibility').textContent = 
+        doc.querySelector('.weather__visibility').textContent =
             allData.visibility;
         assigningIcons(
-            allData.dayId, 
+            allData.dayId,
             allData.weatherId,
-            doc.querySelector('.weather__icon-today'), 
+            doc.querySelector('.weather__icon-today'),
             allData.weatherIcon.today
         );
         setTimeout(() => {
@@ -129,13 +135,13 @@ export function setWeatherNextDays(days) {
     return new Promise((resolve) => {
         let tempKey = [allData.currentUnitOfTemperature];
 
-        for(let i = 0; i < days; i++) {
+        for (let i = 0; i < days; i++) {
             let date = new Date(allData.dateNextDay[i])
             let lang = [allData.currentLanguage];
 
-            doc.querySelector('.weather__title-day-' + i).textContent = 
+            doc.querySelector('.weather__title-day-' + i).textContent =
                 language.dayOfWeek[lang][date.getDay()];
-            doc.querySelector('.weather__temp-day-' + i).textContent = 
+            doc.querySelector('.weather__temp-day-' + i).textContent =
                 allData.temperatureNextDays[tempKey][i];
             assigningIcons(
                 1,
