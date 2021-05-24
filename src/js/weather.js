@@ -45,31 +45,31 @@ let assigningIcons = function (dayId = 1, weatherId, iconDay, spareIcon) {
     }
 
     if (weatherId === 1000) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/113.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/113.svg'>`;
     } else if (weatherId === 1003) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/116.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/116.svg'>`;
     } else if (weatherId === 1006) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/119.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/119.svg'>`;
     } else if (weatherId === 1009) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/122.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/122.svg'>`;
     } else if (weatherId === 1030 || weatherId === 1135 || weatherId === 1147) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/143-248-260.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/143-248-260.svg'>`;
     } else if (weatherId === 1063 || weatherId === 1180 || weatherId === 1186 || weatherId === 1240) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/176-293-299-353.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/176-293-299-353.svg'>`;
     } else if (weatherId === 1150 || weatherId === 1153 || weatherId === 1183) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/263-266-296.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/263-266-296.svg'>`;
     } else if (weatherId === 1189 || weatherId === 1195) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/302-308.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/302-308.svg'>`;
     } else if (weatherId === 1192 || weatherId === 1243 || weatherId === 1246) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/305-356-359.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/305-356-359.svg'>`;
     } else if (weatherId === 1210 || weatherId === 1216 || weatherId === 1255) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/323-329-368.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/323-329-368.svg'>`;
     } else if (weatherId === 1222 || weatherId === 1252 || weatherId === 1258) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/335-365-371.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/335-365-371.svg'>`;
     } else if (weatherId === 1213 || weatherId === 1219 || weatherId === 1225) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/326-332-338.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/326-332-338.svg'>`;
     } else if (weatherId === 1276) {
-        iconDay.innerHTML = `<img src='./../src/assets/images/icon/${dayOrNight}/389.svg'>`;
+        iconDay.innerHTML = `<img src='./src/assets/images/icon/${dayOrNight}/389.svg'>`;
     } else {
         iconDay.innerHTML = `<img src='${spareIcon}'>`;
     }
@@ -85,6 +85,7 @@ export function getWeather() {
     return fetch(url)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             if (allData.lastUpdated < data.current.last_updated_epoch) {
                 getDataWeatherToday(data);
                 getDataWeatherNextDays(data);
