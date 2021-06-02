@@ -1,19 +1,19 @@
-import {allData} from './js/data.js';
+import {allData} from "./js/data";
 import {
     findCity,
     findGeolocation,
     findIpLocation
-} from './js/geolocation.js';
+} from './js/geolocation';
 import {
     setMap,
     updateMap,
     changeLanguageOfMap
-} from './js/map.js';
+} from './js/map';
 import {
     getWeather,
     setWeatherToday,
     setWeatherNextDays
-} from './js/weather.js';
+} from './js/weather';
 import {
     getImage,
     setTempDeg,
@@ -21,7 +21,7 @@ import {
     setLocalStorage,
     getLocalStorage,
     weatherUpdateController
-} from './js/utils.js'
+} from './js/utils'
 
 let doc = document;
 let refreshBtn = doc.querySelector('.header__btn-refresh');
@@ -43,24 +43,20 @@ async function runApp(city) {
     await updateMap();
     await setLocalStorage();
 }
+async function loadHTML() {
+    await getLocalStorage()
+    await setMap()
+    await translate()
+    await findIpLocation()
+    await runApp(allData.city)
+    await changeLanguageOfMap()
+    await setTimeout(() => {
+        doc.querySelector('.background__splash-screen')
+            .classList.remove('active');
+    }, 1000)
+}
 
-window.addEventListener('load', () => {
-    findIpLocation()
-        .then(() => runApp(allData.city))
-        .then(() => changeLanguageOfMap())
-        .then(() => {
-            setTimeout(() => {
-                doc.querySelector('.background__splash-screen')
-                    .classList.remove('active');
-            }, 1000)
-        });
-})
-
-window.addEventListener('DOMContentLoaded', () => {
-    getLocalStorage();
-    setMap();
-    translate();
-})
+window.addEventListener('load', loadHTML())
 
 refreshBtn.addEventListener('click', () => {
     getImage()

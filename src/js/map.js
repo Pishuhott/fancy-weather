@@ -1,4 +1,4 @@
-import {allData} from './data.js';
+import {allData} from './data';
 
 let map;
 let marker;

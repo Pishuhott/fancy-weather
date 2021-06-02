@@ -1,5 +1,5 @@
-import {allData} from './data.js';
-import {language} from './language.js';
+import {allData} from './data';
+import {language} from './language';
 
 let doc = document;
 
@@ -85,7 +85,6 @@ export function getWeather() {
     return fetch(url)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if (allData.lastUpdated < data.current.last_updated_epoch) {
                 getDataWeatherToday(data);
                 getDataWeatherNextDays(data);

@@ -1,5 +1,5 @@
-import {allData} from './data.js';
-import {language} from './language.js';
+import {allData} from './data';
+import {language} from './language';
 import {
     getWeather,
     setWeatherToday,

@@ -1,5 +1,5 @@
-import {allData} from './data.js';
-import {language} from './language.js';
+import {allData} from './data';
+import {language} from './language';
 
 export function findCity(city) {
     let key = 'c6b6da0f80f24b299e08ee1075f81aa5&pretty'
@@ -53,7 +53,7 @@ export function findGeolocation() {
             let elErr = document.querySelector('.error');
             let lang = [allData.currentLanguage];
             elErr.querySelector('.error__message').textContent =
-                language.currentCoordinates.query[lang];
+                language.error.currentCoordinates[lang];
             elErr.classList.add('active');
         })
 }
@@ -68,7 +68,7 @@ export function findIpLocation() {
             let elErr = document.querySelector('.error');
             let lang = [allData.currentLanguage];
             elErr.querySelector('.error__message').textContent =
-                language.currentCoordinates.query[lang];
+                language.error.currentCoordinates[lang];
             elErr.classList.add('active');
         });
 }
