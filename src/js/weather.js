@@ -98,7 +98,7 @@ export function getWeather() {
             let elErr = document.querySelector('.error');
             let lang = [allData.currentLanguage];
             elErr.querySelector('.error__message').textContent =
-                language.weather.background[lang];
+                language.error.weather[lang];
             elErr.classList.add('active');
         })
 }
