@@ -1,3 +1,5 @@
+import './main.scss';
+import './index.html';
 import {allData} from "./js/data";
 import {
     findCity,
