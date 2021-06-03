@@ -105,7 +105,7 @@ export const language = {
             ru: `Упс! Что-то пошло не так.<br>Вы не можете обновить фон.`,
         },
         weather: {
-            en: `The weather data could not be obtained.<br>Please, try again later`.,
+            en: `The weather data could not be obtained.<br>Please, try again later.`,
             ru: `Не удалось получить данные о погоде.<br>Пожалуйста, попробуйте позже.`,
         },
         currentCoordinates: {
