@@ -79,7 +79,7 @@ export function getWeather() {
     const lng = allData.coordinates.lng;
     const lat = allData.coordinates.lat;
     const key = '485137a585be4832b85155503210705';
-    const url = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${lat},
         ${lng}&days=4&lang=${allData.currentLanguage}&aqi=no&alerts=no`;
 
     return fetch(url)
