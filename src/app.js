@@ -44,6 +44,7 @@ async function runApp(city) {
     await setWeatherNextDays(3);
     await updateMap();
     await setLocalStorage();
+    await getImage();
 }
 async function loadHTML() {
     await getLocalStorage()
