@@ -44,7 +44,6 @@ async function runApp(city) {
     await setWeatherNextDays(3);
     await updateMap();
     await setLocalStorage();
-    await getImage();
 }
 async function loadHTML() {
     await getLocalStorage()
@@ -115,7 +114,8 @@ locatiosBtn.addEventListener('click', () => {
 })
 
 searchBtn.addEventListener('click', () => {
-    runApp(searchInput.value)
+    runApp(searchInput.value);
+    getImage();
 })
 
 searchInput.onkeydown = function () {
@@ -124,7 +124,8 @@ searchInput.onkeydown = function () {
 
 searchInput.addEventListener('keydown', (e) => {
     if (e.keyCode === 13) {
-        runApp(searchInput.value)
+        runApp(searchInput.value);
+        getImage();
     }
 })
 
