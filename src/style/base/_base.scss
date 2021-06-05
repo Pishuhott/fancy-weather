@@ -44,7 +44,6 @@ button {
 }
 
 .background__splash-screen {
-    top: -100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +64,7 @@ button {
     background-size: cover;
     background-position: 50%;
     z-index: -2;
-    background-image: url("./assets/images/background.jpg");
+    background-image: url("../assets/images/background.jpg");
 }
 
 .background__image-delete {

@@ -54,7 +54,8 @@ async function loadHTML() {
     await changeLanguageOfMap()
     await setTimeout(() => {
         doc.querySelector('.background__splash-screen')
-            .classList.remove('active');
+            .style.top = `-100%`
+            ;
     }, 1000)
 }
 
