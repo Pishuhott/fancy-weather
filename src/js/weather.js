@@ -86,6 +86,7 @@ export function getWeather() {
         .then(res => res.json())
         .then(data => {
             if (allData.lastUpdated < data.current.last_updated_epoch) {
+                console.log('weather')
                 getDataWeatherToday(data);
                 getDataWeatherNextDays(data);
                 allData.weatherUpdate = true;
@@ -94,7 +95,6 @@ export function getWeather() {
             }
         })
         .catch(error => {
-            console.log(error);
             let elErr = document.querySelector('.error');
             let lang = [allData.currentLanguage];
             elErr.querySelector('.error__message').textContent =

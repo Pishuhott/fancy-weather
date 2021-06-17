@@ -45,6 +45,17 @@ async function runApp(city) {
     await updateMap();
     await setLocalStorage();
 }
+
+async function lanUpdate() {
+    await findCity(allData.city)
+    await getWeather()
+    await setWeatherToday()
+    await setWeatherNextDays(3)
+    await translate()
+    await changeLanguageOfMap()
+    await setLocalStorage()
+}
+
 async function loadHTML() {
     await getLocalStorage()
     await setMap()
@@ -55,7 +66,7 @@ async function loadHTML() {
     await setTimeout(() => {
         doc.querySelector('.background__splash-screen')
             .style.top = `-100%`
-            ;
+        ;
     }, 1000)
 }
 
@@ -68,27 +79,17 @@ refreshBtn.addEventListener('click', () => {
 langEnBtn.addEventListener('click', () => {
     langRuBtn.classList.remove('header__btn--active');
     langEnBtn.classList.add('header__btn--active');
+    allData.lastUpdated = 0
     allData.currentLanguage = 'en';
-    findCity(allData.city)
-        .then(() => getWeather())
-        .then(() => setWeatherToday())
-        .then(() => setWeatherNextDays(3))
-        .then(() => translate())
-        .then(() => changeLanguageOfMap())
-        .then(() => setLocalStorage())
+    lanUpdate()
 })
 
 langRuBtn.addEventListener('click', () => {
     langEnBtn.classList.remove('header__btn--active');
     langRuBtn.classList.add('header__btn--active');
-    allData.currentLanguage = 'ru';
-    findCity(allData.city)
-        .then(() => getWeather())
-        .then(() => setWeatherToday())
-        .then(() => setWeatherNextDays(3))
-        .then(() => translate())
-        .then(() => changeLanguageOfMap())
-        .then(() => setLocalStorage())
+    allData.lastUpdated = 0
+    allData.currentLanguage = 'ru'
+    lanUpdate()
 })
 
 tempCelBtn.addEventListener('click', () => {
