@@ -9,6 +9,8 @@ export function findCity(city) {
     return fetch(url)
         .then(res => res.json())
         .then(data => {
+            // console.log(data)
+            allData.dateLocation = data.timestamp.created_http
             allData.coordinates.lat = data.results[0].geometry.lat;
             allData.coordinates.lng = data.results[0].geometry.lng;
 
@@ -20,7 +22,7 @@ export function findCity(city) {
                 allData.city = data.results[0].components.town;
             } else {
                 allData.city = data.results[0].components.city;
-            };
+            }
             allData.country = data.results[0].components.country;
 
             document.querySelector('.title__location').textContent =
@@ -36,7 +38,7 @@ export function findCity(city) {
             elErr.querySelector('.error__message').textContent =
                 language.error.query[lang];
             elErr.classList.add('active');
-        });
+        })
 }
 
 export function findGeolocation() {
@@ -70,5 +72,5 @@ export function findIpLocation() {
             elErr.querySelector('.error__message').textContent =
                 language.error.currentCoordinates[lang];
             elErr.classList.add('active');
-        });
+        })
 }

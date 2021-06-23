@@ -17,6 +17,7 @@ import {
     setWeatherNextDays
 } from './js/weather';
 import {
+    showTime,
     getImage,
     setTempDeg,
     translate,
@@ -117,6 +118,7 @@ locatiosBtn.addEventListener('click', () => {
 searchBtn.addEventListener('click', () => {
     runApp(searchInput.value);
     getImage();
+    showTime()
 })
 
 searchInput.onkeydown = function () {
@@ -127,6 +129,7 @@ searchInput.addEventListener('keydown', (e) => {
     if (e.keyCode === 13) {
         runApp(searchInput.value);
         getImage();
+        showTime()
     }
 })
 

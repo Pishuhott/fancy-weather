@@ -86,7 +86,7 @@ export function getWeather() {
         .then(res => res.json())
         .then(data => {
             if (allData.lastUpdated < data.current.last_updated_epoch) {
-                console.log('weather')
+                allData.dateLocation = data.location.tz_id
                 getDataWeatherToday(data);
                 getDataWeatherNextDays(data);
                 allData.weatherUpdate = true;

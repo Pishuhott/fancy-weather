@@ -10,10 +10,7 @@ let doc = document;
 let rotateDeg = 0;
 
 export function showTime() {
-    let today = new Date();
-    let hour = today.getHours();
-    let min = today.getMinutes();
-    let sec = today.getSeconds();
+    let today = new Date()
     let date = today.getDate();
     let month;
     let weekDay;
@@ -27,12 +24,9 @@ export function showTime() {
     }
 
     doc.querySelector('.title__date').textContent = `${weekDay}, ${date} ${month}`;
-    doc.querySelector('.title__time').textContent = `${hour}:${addZeroTime(min)}:${addZeroTime(sec)}`;
-    setTimeout(showTime, 1000);
-}
-
-function addZeroTime(n) {
-    return (parseInt(n, 10) < 10 ? '0' : '') + n;
+    doc.querySelector('.title__time').textContent =
+        today.toLocaleTimeString( `${allData.currentLanguage}`,{timeZone: `${allData.dateLocation}`});
+    setTimeout(showTime, 1000)
 }
 
 function loadImage(urlImage) {
