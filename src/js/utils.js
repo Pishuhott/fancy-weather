@@ -25,7 +25,7 @@ export function showTime() {
 
     doc.querySelector('.title__date').textContent = `${weekDay}, ${date} ${month}`;
     doc.querySelector('.title__time').textContent =
-        today.toLocaleTimeString( `${allData.currentLanguage}`,{timeZone: `${allData.dateLocation}`});
+        today.toLocaleTimeString( `${allData.currentLanguage}`, {timeZone: `${allData.dateLocation}`});
     setTimeout(showTime, 1000)
 }
 
@@ -66,7 +66,6 @@ export function translate() {
         language.longitude[lang];
     doc.querySelector('.splash-screen-text').textContent =
         language.preloader[lang];
-    showTime();
 }
 
 export function getImage() {
@@ -99,14 +98,14 @@ export function setTempDeg(days) {
     for (let i = 0; i < days; i++) {
         doc.querySelector('.weather__temp-day-' + i).textContent =
             allData.temperatureNextDays[tempKey][i];
-    };
+    }
 }
 
 export function getLocalStorage() {
     return new Promise((resolve) => {
         if (localStorage.getItem('language') !== null) {
             allData.currentLanguage = localStorage.getItem('language');
-        };
+        }
 
         if (localStorage.getItem('temp') !== null) {
             allData.currentUnitOfTemperature = localStorage.getItem('temp');
@@ -118,7 +117,7 @@ export function getLocalStorage() {
         } else {
             doc.querySelector('.header__btn-ru-lang').classList.add('header__btn--active');
             doc.querySelector('.header__btn-eng-lang').classList.remove('header__btn--active');
-        };
+        }
 
         if (allData.currentUnitOfTemperature === 'celsius') {
             doc.querySelector('.header__btn-celsius-deg').classList.add('header__btn--active');
@@ -126,7 +125,7 @@ export function getLocalStorage() {
         } else {
             doc.querySelector('.header__btn-fahrenheid-deg').classList.add('header__btn--active')
             doc.querySelector('.header__btn-celsius-deg').classList.remove('header__btn--active');
-        };
+        }
         setTimeout(() => {
             resolve();
         }, 0);

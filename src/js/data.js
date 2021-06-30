@@ -1,5 +1,5 @@
 export let allData = {
-    dateLocation: 'Europe/Minsk',
+    dateLocation: "Europe/Minsk",
     currentLanguage: 'en',
     currentUnitOfTemperature: 'celsius',
     coordinates: {

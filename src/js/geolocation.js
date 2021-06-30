@@ -9,8 +9,6 @@ export function findCity(city) {
     return fetch(url)
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
-            allData.dateLocation = data.timestamp.created_http
             allData.coordinates.lat = data.results[0].geometry.lat;
             allData.coordinates.lng = data.results[0].geometry.lng;
 

@@ -118,7 +118,7 @@ locatiosBtn.addEventListener('click', () => {
 searchBtn.addEventListener('click', () => {
     runApp(searchInput.value);
     getImage();
-    showTime()
+    // showTime()
 })
 
 searchInput.onkeydown = function () {
@@ -129,13 +129,15 @@ searchInput.addEventListener('keydown', (e) => {
     if (e.keyCode === 13) {
         runApp(searchInput.value);
         getImage();
-        showTime()
+        // showTime()
     }
 })
 
 errBtn.addEventListener('click', () => {
     doc.querySelector('.error').classList.remove('active')
 })
+
+showTime()
 
 setInterval(() => {
     weatherUpdateController()
