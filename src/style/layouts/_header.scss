@@ -1,0 +1,127 @@
+.header {
+    padding-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+
+    &__buttons {
+        display: flex;
+
+        button {
+            height: 4.4rem;
+            width: 4.4rem;
+            font-weight: 700;
+        }
+    }
+
+    &__btn-refresh {
+        border-radius: 0.5rem;
+        background: rgba(180, 184, 187, 0.4);
+        background-image: url("../assets/images/vector.svg");
+        background-repeat: no-repeat;
+        img {
+            position: relative;
+            top: 4%;
+            transition: 1s;
+        }
+        &:hover {
+            background: hsla(0, 0%, 100%, 0.4);
+            background-image: url("../assets/images/vector.svg");
+        }
+    }
+
+    &__language {
+        display: flex;
+        align-content: stretch;
+        margin: 0 0 0 1rem;
+    }
+
+    &__btn-eng-lang {
+        border-radius: 0.5rem 0 0 0.5rem;
+        background: $color-main;
+        &:hover {
+            background: $color-hover;
+        }
+    }
+
+    &__btn-ru-lang {
+        border-radius: 0 0.5rem 0.5rem 0;
+        background: $color-main;
+        &:hover {
+            background: $color-hover;
+        }
+    }
+
+    &__temperature {
+        display: flex;
+        align-content: stretch;
+        margin: 0 0 0 1rem;
+    }
+
+    &__btn-celsius-deg {
+        border-radius: 0.5rem 0 0 0.5rem;
+        background: $color-main;
+        &:hover {
+            background: $color-hover;
+        }
+    }
+
+    &__btn-fahrenheid-deg {
+        border-radius: 0 0.5rem 0.5rem 0;
+        background: $color-main;
+        &:hover {
+            background: $color-hover;
+        }
+    }
+
+    &__btn-current-location {
+        margin: 0 0 0 1rem;
+        background: $color-activeBtn;
+        border-radius: 0.5rem;
+        img {
+            position: relative;
+            top: 4%;
+        }
+        &:hover {
+            background: $color-hover;
+        }
+    }
+
+    &__btn--active {
+        background: $color-activeBtn;
+    }
+
+    &__search {
+        display: flex;
+        margin-left: 1rem;
+    }
+
+    &__search-input {
+        font-weight: 400;
+        color: #fff;
+        border-radius: 0.5rem 0 0 0.5rem;
+        width: 274px;
+        height: 44px;
+        min-width: 274px;
+        min-height: 44px;
+        padding-left: 15px;
+        font-size: 1.4rem;
+        background: $color-main;
+        border: 1px solid rgba(228, 227, 227, 0.2);
+        &::placeholder {
+            color: white;
+        }
+    }
+
+    &__search-btn {
+        font-weight: 700;
+        border-radius: 0 0.5rem 0.5rem 0;
+        width: 10rem;
+        line-height: 1.7rem;
+        text-align: center;
+        text-transform: uppercase;
+        background: $color-activeBtn;
+        &:hover {
+            background: $color-hover;
+        }
+    }
+}

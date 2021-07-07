@@ -1,0 +1,30 @@
+.title {
+    margin-top: 7rem;
+    color: white;
+    user-select: none;
+    &__location {
+        font-size: 4.4rem;
+        font-weight: bold;
+        line-height: 5.4rem;
+        text-transform: uppercase;
+    }
+
+    &__date-time {
+        margin-top: 1rem;
+    }
+
+    &__date {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2.4rem;
+        line-height: 2.9rem;
+    }
+
+    &__time {
+        margin-left: 2rem;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2.4rem;
+        line-height: 2.9rem;
+    }
+}

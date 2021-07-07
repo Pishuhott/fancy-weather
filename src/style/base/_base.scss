@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    max-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    background-color: cadetblue;
+    overflow-x: hidden;
+}
+
+button {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.7rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.overlay,
+.background__image,
+.background__splash-screen {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    background: linear-gradient(180deg, rgba(8, 15, 26, 0.59), rgba(17, 17, 46, 0.46));
+    z-index: -1;
+    transition: none;
+}
+
+.background__splash-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: cadetblue;
+    transition: all 1s linear;
+    z-index: 5;
+    img {
+        width: 100px;
+    }
+    .splash-screen-text {
+        font-size: 5rem;
+        color: white;
+    }
+}
+
+.background__image {
+    background-size: cover;
+    background-position: 50%;
+    z-index: -2;
+    background-image: url("../assets/images/background.jpg");
+}
+
+.background__image-delete {
+    animation: deleteImg 2s linear;
+}
+
+.wrapper {
+    padding: 0 6rem;
+    margin: auto;
+    width: 100%;
+    max-width: 1739px;
+}
+
+@keyframes deleteImg {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

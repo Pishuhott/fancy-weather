@@ -1,0 +1,362 @@
+@media screen and (max-width: $desktop-width-1) {
+    .weather {
+        &__temp-today {
+            font-size: 22rem;
+            line-height: 26rem;
+        }
+
+        &__deg-today {
+            font-size: 9rem;
+        }
+
+        &__deg-today {
+            font-size: 12rem;
+            line-height: 16.3rem;
+            top: -70px;
+        }
+
+        &__today-details {
+            span {
+                font-size: 1.8rem;
+                line-height: 2.7rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $desktop-width-2) {
+    .weather {
+        &__temp-today {
+            font-size: 19rem;
+            line-height: 24rem;
+        }
+
+        &__deg-today {
+            font-size: 9rem;
+        }
+
+        &__wrapper {
+            top: -55px;
+        }
+
+        &__today-details {
+            span {
+                font-size: 1.8rem;
+                line-height: 2.7rem;
+            }
+        }
+
+        &__day-temp {
+            span {
+                font-size: 4rem;
+                line-height: 5.5rem;
+            }
+        }
+
+        &__icon-today {
+            max-width: 15rem;
+        }
+
+        &__three-days {
+            margin-top: 0;
+        }
+
+        &__icon {
+            width: 10rem;
+            height: 10rem;
+        }
+    }
+
+    .map {
+        &__img {
+            width: 350px;
+            height: 350px;
+        }
+    }
+}
+
+@media screen and (max-width: $desktop-width-3) {
+    .title {
+        margin-top: 4rem;
+        &__location {
+            font-size: 3.8rem;
+            line-height: 4.4rem;
+        }
+        &__date {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+
+        &__time {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    .weather {
+        &__temp-today {
+            font-size: 16rem;
+            line-height: 20rem;
+        }
+        &__deg-today {
+            line-height: 15.3rem;
+            top: -50px;
+        }
+        &__wrapper {
+            top: -60px;
+        }
+
+        &__today-details {
+            span {
+                font-size: 1.6rem;
+                line-height: 2.5rem;
+            }
+        }
+    }
+
+    .map {
+        &__img {
+            width: 320px;
+            height: 320px;
+        }
+    }
+}
+
+@media screen and (max-width: $desktop-width-4) {
+    .container-weather-map {
+        justify-self: stretch;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0;
+    }
+
+    .weather {
+        margin-top: 2rem;
+        &__today {
+            width: auto;
+            justify-content: center;
+            margin-right: 0;
+        }
+        &__temp-today {
+            font-size: 19rem;
+            line-height: 26rem;
+        }
+        &__deg-today {
+            font-size: 9rem;
+            line-height: 19rem;
+            top: -70px;
+        }
+
+        &__wrapper {
+            top: -45px;
+        }
+
+        &__today-details {
+            margin-top: 0;
+            span {
+                font-size: 1.6rem;
+                line-height: 2.5rem;
+            }
+        }
+    }
+
+    .map {
+        margin: 2rem 0;
+        &__img {
+            width: 350px;
+            height: 350px;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-width-1) {
+    .header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &__language {
+            margin: 0 0 0 2rem;
+        }
+
+        &__temperature {
+            margin: 0 0 0 2rem;
+        }
+
+        &__btn-current-location {
+            margin: 0 0 0 2rem;
+        }
+
+        &__search {
+            margin-left: 0;
+            margin-top: 2rem;
+            width: 324px;
+        }
+        &__search-input {
+            width: 240px;
+            min-width: 240px;
+            padding-left: 10px;
+            font-size: 1.1rem;
+        }
+
+        &__search-btn {
+            font-size: 1.1rem;
+            width: 10rem;
+            min-width: 7rem;
+        }
+    }
+
+    .title {
+        margin: 0;
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: $tablet-width-2) {
+    .wrapper {
+        padding: 0 2rem;
+    }
+    .weather {
+        margin-top: 2rem;
+        width: 100%;
+        &__wrapper {
+            margin: 0;
+        }
+        &__today {
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        &__temp-today {
+            font-size: 19rem;
+            line-height: 19rem;
+        }
+
+        &__wrapper {
+            top: 0;
+            flex-direction: row;
+        }
+
+        &__three-days {
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        &__day-title {
+            text-align: center;
+        }
+
+        &__day-temp {
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        &__icon {
+            img {
+                top: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-width-1) {
+    .wrapper {
+        padding: 0 1rem;
+    }
+
+    .weather {
+        &__temp-today {
+            font-size: 13rem;
+            line-height: 15rem;
+        }
+        &__deg-today {
+            font-size: 8rem;
+            line-height: 8rem;
+            top: -50px;
+        }
+
+        &__wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .map {
+        &__img {
+            width: 300px;
+            height: 300px;
+        }
+    }
+}
+
+@media screen and (max-width: $mobile-width-2) {
+    .header {
+        &__language {
+            margin: 0 0 0 1rem;
+        }
+
+        &__temperature {
+            margin: 0 0 0 1rem;
+        }
+
+        &__btn-current-location {
+            margin: 0 0 0 1rem;
+        }
+
+        &__search {
+            margin-top: 2rem;
+            width: 295px;
+        }
+        &__search-input {
+            width: 210px;
+            min-width: 210px;
+            padding-left: 10px;
+            font-size: 1.1rem;
+        }
+    }
+
+    .weather {
+        &__temp-today {
+            font-size: 10rem;
+            line-height: 12rem;
+        }
+        &__deg-today {
+            font-size: 6rem;
+            line-height: 6rem;
+            top: -30px;
+        }
+
+        &__today-details {
+            span {
+                font-size: 1.5rem;
+                line-height: 2.5rem;
+            }
+        }
+
+        &__day {
+            margin-right: 0;
+        }
+
+        &__day-temp {
+            span {
+                font-size: 2.5rem;
+                line-height: 3.5rem;
+            }
+        }
+
+        &__icon {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .map {
+        &__img {
+            width: 220px;
+            height: 220px;
+        }
+    }
+}
